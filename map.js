@@ -13,4 +13,25 @@ var map = new mapboxgl.Map({
     zoom: 8
 });
 
-var trees_url = "./data/MiningTrans.geojson"
+var mining_url = "./data/MiningTrans.geojson"
+
+map.on('load',function(){
+  // define a 'source' for your point dataset
+  map.addSource('mining_data',{
+    'type':'geojson',
+    'data': "./data/MiningTrans.geojson"
+  });
+  // add a new layer with your points
+  map.addLayer({
+    'id':'mining',
+    'type':'circle',
+    'source':'mining_data',
+    'paint':{
+      'circle-radius':4,
+      'circle-color': '#349f27',
+      'circle-opacity':0.7
+    },
+  })
+
+
+});
