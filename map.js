@@ -10,7 +10,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
     center: [36.23, -18.07],
-    zoom: 4
+    zoom: 5
 });
 
 var mining_url = "./data/MiningTrans.geojson"
