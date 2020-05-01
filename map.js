@@ -28,7 +28,9 @@ map.on('load',function(){
     'source':'mining_data',
     'paint':{
       'circle-radius':4,
-      'circle-color': '#349f27',
+      'circle-color': {
+      	property: 'Nationality',
+      },
       'circle-opacity':0.7
     },
   })
