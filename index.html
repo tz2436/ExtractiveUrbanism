@@ -1,71 +1,40 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
+<!DOCTYPE html> <!-- let the browser know this is an HTML file -->
 
-<!-- Load d3.js -->
-<script src="https://d3plus.org/js/d3plus.v2.0.0-alpha.25.full.min.js"></script>
+<html>      <!-- everything else is enclosed in html tags -->
+<head>      <!-- the head is for metadata prior to building the page -->
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz">
-	<script type="text/javascript">
-		
+    <!-- define the character set -->
+    <meta charset='utf-8' />    
 
-  		var links = [
-    {'source': 'Onshore', 'target': 'Wentworth Resources', 'value': 85},
-    {'source': 'Onshore', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 15},
-    {'source': 'Area1', 'target': 'Anadarko', 'value': 26.5},
-    {'source': 'Area1', 'target': 'Mitsui E&P Mozambique Area 1', 'value': 20},
-    {'source': 'Area1', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 15},
-    {'source': 'Area1', 'target': 'Beas Rovuma Energy Mozambique', 'value': 10},
-    {'source': 'Area1', 'target': 'BPRL Ventures Mozambique', 'value': 10},
-    {'source': 'Area1', 'target': 'ONGC Videsh', 'value': 10},
-    {'source': 'Area1', 'target': 'PTTEP Mozambique Area 1', 'value': 8.5},
-    {'source': 'Area4', 'target': 'Eni', 'value': 25},
-    {'source': 'Area4', 'target': 'ExxonMobil', 'value': 25},
-    {'source': 'Area4', 'target': 'China National Petroleum Corporation (CNPC)', 'value': 20},
-    {'source': 'Area4', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 10},
-    {'source': 'Area4', 'target': 'Galp Energia', 'value': 10},
-    {'source': 'Area4', 'target': 'Korea Gas Corporation (KOGAS)', 'value': 10},
-    {'source': 'Area2', 'target': 'Statoil', 'value': 65},
-    {'source': 'Area2', 'target': 'Tullow', 'value': 25},
-    {'source': 'Area2', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 10},
-    {'source': 'Area5', 'target': 'Statoil', 'value': 65},
-    {'source': 'Area5', 'target': 'Tullow', 'value': 25},
-    {'source': 'Area5', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 10},
-    {'source': 'Area3', 'target': 'Petronas', 'value': 50},
-    {'source': 'Area3', 'target': 'Total', 'value': 40},
-    {'source': 'Area3', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 10},
-    {'source': 'Area6', 'target': 'Petronas', 'value': 50},
-    {'source': 'Area6', 'target': 'Total', 'value': 40},
-    {'source': 'Area6', 'target': 'Empresa Nacional de Hidrocarbonetos (ENH)', 'value': 10},
-    
-    {'source': 'Wentworth Resources','target': 'UK','value': 85},
-    {'source': 'Empresa Nacional de Hidrocarbonetos (ENH)','target': 'Mozambique','value': 80},
-    {'source': 'Anadarko', 'target': 'USA', 'value': 26.5},
-    {'source': 'Mitsui E&P Mozambique Area 1','target': 'Japan','value': 20},
-    
-    {'source': 'Beas Rovuma Energy Mozambique','target': 'India','value': 10},
-    {'source': 'BPRL Ventures Mozambique','target': 'India','value': 10},
-    {'source': 'ONGC Videsh', 'target': 'India', 'value': 10},
-    {'source': 'PTTEP Mozambique Area 1','target': 'Thailand','value': 8.5},
-    {'source': 'Eni', 'target': 'Italy', 'value': 25},
-    {'source': 'ExxonMobil', 'target': 'USA', 'value': 25},
-    {'source': 'China National Petroleum Corporation (CNPC)','target': 'China','value': 20},
-    
-    {'source': 'Galp Energia', 'target': 'Portugal', 'value': 10},
-    {'source': 'Korea Gas Corporation (KOGAS)','target': 'Korea','value': 10},
-    {'source': 'Statoil', 'target': 'Norway', 'value': 130},
-    {'source': 'Tullow', 'target': 'UK', 'value': 50},
-    
-    {'source': 'Petronas', 'target': 'Malaysia', 'value': 100},
-    {'source': 'Total', 'target': 'France', 'value': 80},
-]
-new d3plus.Sankey()
-  .links(links)
-  .value(function value(links) {
-  	return links.value;
-  })
-  .nodeAlign('justify')
-  .render();
-	</script>
-</div>
+    <!-- the title of the page which will show up in the browser bar -->
+    <title>Map Test</title>     
 
+    <!-- discourage the browser from caching the page -->    
+    <meta http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate' />
+    <meta http-equiv='Pragma' content='no-cache' />
+    <meta http-equiv='Expires' content='0' />    
+
+    <!-- tells mobile devices how to scale the page -->    
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <!-- stylesheet links -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />     
+    <link href='style.css' rel='stylesheet' />
+
+    <!-- javascript links -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+
+</head>
+<body>      <!-- visible structure of page begins here -->
+
+    <!-- an element called 'map' -->
+    <div id='map'></div>
+
+    <!-- an element called 'info' -->
+    <div id='info'></div>
+
+    <!-- load additional javascript -->
+    <script src='map.js'></script>    
+
+</body>
+</html>
