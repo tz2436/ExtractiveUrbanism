@@ -34,6 +34,10 @@ map.on('load',function(){
       	[{zoom:5, value: 1000}, 6],
       	[{zoom:5, value: 1000000}, 9],
       	[{zoom:5, value: 1000000000}, 12],
+      	[{zoom:8, value: 0}, 3],
+      	[{zoom:8, value: 1000}, 6],
+      	[{zoom:8, value: 1000000}, 9],
+      	[{zoom:8, value: 1000000000}, 12],
       	]
       },
       'circle-color': [
@@ -106,3 +110,8 @@ map.on('load',function(){
   });
 
 });
+
+map.addControl(new mapboxgl.FullscreenControl());
+
+
+
