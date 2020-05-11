@@ -23,7 +23,7 @@ map.on('load',function(){
   });
   // add a new layer with your points
   map.addLayer({
-    'id':'mining',
+    'id':'mining_data',
     'type':'circle',
     'source':'mining_data',
     'paint':{
@@ -77,6 +77,32 @@ map.on('load',function(){
       ],
       'circle-opacity':0.7
     },
-  })
+  });
+  // Create a popup
+  var popup = new mapboxgl.Popup({
+  	closeButton: false,
+  	closeOnClick: false
+  });
+
+  map.on('mouseenter', 'mining_data', function(e) {
+  	map.getCanvas().style.cursor = 'pointer';
+  	var coordinates = e.features[0].geometry.coordinates.slice();
+  	var companyName = e.features[0].properties.Name;
+  	var industry = e.features[0].properties.Industry;
+  	var nationality = e.features[0].properties.Nationality;
+  	var estimatedProfit = e.features[0].properties['Net Profit_Estimated'];
+  	while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+  		coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+  	}
+  	popup
+  		.setLngLat(coordinates)
+  		.setHTML('<h3>' + companyName + '</h3><p>Industry: ' + industry + '</p><p>Nationality: ' + nationality + '</p><p>Estimated Net Profit: ' + estimatedProfit + '</p>' )
+  		.addTo(map);
+  });
+
+  map.on('mouseleave', 'mining_data', function() {
+  	map.getCanvas().style.cursor = '';
+  	popup.remove();
+  });
 
 });
