@@ -10,7 +10,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [36.23, -18.07],
-    zoom: 5
+    zoom: 4.5
 });
 
 var mining_url = "./data/MiningTrans.geojson"
@@ -96,7 +96,7 @@ map.on('load',function(){
   	}
   	popup
   		.setLngLat(coordinates)
-  		.setHTML('<h3>' + companyName + '</h3><p>Industry: ' + industry + '</p><p>Nationality: ' + nationality + '</p><p>Estimated Net Profit: ' + estimatedProfit + '</p>' )
+  		.setHTML('<h3>' + companyName + '</h3><p>Industry: ' + industry + '<br>Nationality: ' + nationality + '<br>Estimated Net Profit: ' + estimatedProfit + '</p>' )
   		.addTo(map);
   });
 
